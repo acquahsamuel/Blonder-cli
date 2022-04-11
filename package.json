@@ -1,0 +1,34 @@
+{
+  "name": "blonder-cli",
+  "version": "1.0.0",
+  "description": "A cli tool for blonder",
+  "main": "index.js",
+  "scripts": {
+    "test": "blonder jest test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acquahsamuel/blonder-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "tool",
+    "task",
+    "runner",
+    "runner"
+  ],
+  "author": "Acquah Samuel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acquahsamuel/blonder-cli/issues"
+  },
+  "homepage": "https://github.com/acquahsamuel/blonder-cli#readme",
+  "dependencies": {
+    "caporal": "^1.4.0",
+    "chokidar": "^3.5.3",
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "lodash.debounce": "^4.0.8"
+  }
+}
