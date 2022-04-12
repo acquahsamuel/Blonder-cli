@@ -6,9 +6,7 @@
   "scripts": {
     "test": "blonder jest test"
   },
-  "bin": {
-    "blonder" : "index.js"
-  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/acquahsamuel/blonder-cli.git"
@@ -22,6 +20,9 @@
   ],
   "author": "Acquah Samuel",
   "license": "MIT",
+  "bin": {
+    "blonder" : "index.js"
+  },
   "bugs": {
     "url": "https://github.com/acquahsamuel/blonder-cli/issues"
   },

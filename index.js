@@ -5,7 +5,7 @@ const chokidar = require("chokidar");
 const prog = require("caporal");
 const { spawn } = require("child_process");
 const fs = require("fs");
-const color = require("color");
+const colors = require("colors");
 
 prog
   .version("1.0.0")
@@ -23,9 +23,8 @@ prog
       if (proc) {
         proc.kill();
       }
-      console.log()
+      console.log(colors.green('Starting application'));
       proc = spawn("node", [name], { stdio: "inherit" });
-      // console.log("Starting user program");
     }, 100);
 
     chokidar
