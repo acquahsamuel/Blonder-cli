@@ -2,21 +2,37 @@
 
 const debounce = require("lodash.debounce");
 const chokidar = require("chokidar");
-const prog = require('caporal');
-const color = require('color');
+const prog = require("caporal");
+const { spawn } = require("child_process");
+const fs = require("fs");
+const color = require("color");
 
+prog
+  .version("1.0.0")
+  .argument("[filename]", "Name of the file to execute")
+  .action(async ({ filename }) => {
+    const name = filename || "index.js";
+    try {
+      await fs.promises.access(name);
+    } catch (err) {
+      throw new Error(`File not found ${name}`);
+    }
 
-const start = debounce(() => {
-  console.log("Starting user program");
-}, 100);
+    let proc;
+    const start = debounce(() => {
+      if (proc) {
+        proc.kill();
+      }
+      console.log()
+      proc = spawn("node", [name], { stdio: "inherit" });
+      // console.log("Starting user program");
+    }, 100);
 
-prog.version('1.0.0').command('start' , 'Start an application');
+    chokidar
+      .watch(".")
+      .on("add", start)
+      .on("change", start)
+      .on("unlink", start);
+  });
 
-chokidar
-  .watch(".")
-  .on("add", start)
-  .on("change", () => console.log("File changed"))
-  .on("unlink", console.log("File removed"));
-
-
-  prog.parse(process.argv);
+prog.parse(process.argv);
